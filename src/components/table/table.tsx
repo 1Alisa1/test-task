@@ -1,4 +1,6 @@
 import styles from "./table.module.scss";
+import Pagination from "../pagination/pagination";
+import usePagination from "../../hooks/usePagination";
 
 const Table: React.FC = () => {
   const values = [
@@ -1304,8 +1306,28 @@ const Table: React.FC = () => {
     },
   ];
 
+  const {
+    firstContentIndex,
+    lastContentIndex,
+    nextPage,
+    prevPage,
+    page,
+    setPage,
+    totalPages,
+  } = usePagination({
+    contentPerPage: 10,
+    count: values.length,
+  });
+
   return (
     <>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        prevPage={prevPage}
+        setPage={setPage}
+        nextPage={nextPage}
+      />
       <table className={styles.table}>
         <thead>
           <tr>
@@ -1319,7 +1341,7 @@ const Table: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {values.map((value) => (
+          {values.slice(firstContentIndex, lastContentIndex).map((value) => (
             <tr key={value.id}>
               <td>{value.rank}</td>
               <td>{value.symbol}</td>
@@ -1335,11 +1357,7 @@ const Table: React.FC = () => {
                 {value.changePercent24Hr}
               </td>
               <td>{value.priceUsd}</td>
-              <td
-                className={styles.plus}
-              >
-                +
-              </td>
+              <td className={styles.plus}>+</td>
             </tr>
           ))}
         </tbody>
@@ -1354,7 +1372,7 @@ const Table: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {values.map((value) => (
+          {values.slice(firstContentIndex, lastContentIndex).map((value) => (
             <tr key={value.id}>
               <td>{value.symbol}</td>
               <td>{Number(value.supply).toFixed(2)}</td>
@@ -1367,11 +1385,7 @@ const Table: React.FC = () => {
               >
                 {value.changePercent24Hr}
               </td>
-              <td
-                className={styles.plus}
-              >
-                +
-              </td>
+              <td className={styles.plus}>+</td>
             </tr>
           ))}
         </tbody>
