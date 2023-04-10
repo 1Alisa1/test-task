@@ -1,1 +1,101 @@
+@use "/src/scss/abstracts/variables" as *;
+@use "/src/scss/abstracts/mixins" as *;
 
+header {
+  @include large {
+    @include wrapper(map-get($width, "large"));
+    min-height: 150px;
+    margin-bottom: 50px;
+  }
+  @include medium {
+    @include wrapper(map-get($width, "medium"));
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100px;
+    margin-bottom: 30px;
+  }
+  @include small {
+    @include wrapper-small;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 60px;
+    margin-bottom: 20px;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .popularCoins {
+    display: flex;
+    gap: 1rem;
+    @include medium {
+      gap: 1rem;
+    }
+    @include small {
+      gap: 0.1rem;
+    }
+    .coin {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.8rem;
+      width: fit-content;
+      height: fit-content;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background-color: rgb(239 239 239);
+      @include medium {
+        padding: 5px 8px;
+      }
+      @include small {
+        gap: 0.3rem;
+        padding: 5px 8px;
+      }
+      .name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        @include medium {
+          font-size: 1rem;
+        }
+        @include small {
+          font-size: 0.7rem;
+        }
+      }
+      .value {
+        font-size: 1.2rem;
+        @include medium {
+          font-size: 1rem;
+        }
+        @include small {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+  .portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.7rem;
+    @include medium {
+      gap: 0.7rem;
+      font-size: 1rem;
+    }
+    @include small {
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      @include medium {
+        width: 32px;
+        height: 32px;
+      }
+      @include small {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
