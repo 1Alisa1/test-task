@@ -1,6 +1,9 @@
 import { Outlet } from "react-router-dom";
 import styles from "./layout.module.scss";
 import { Button } from "../button/button";
+import Modal from "../modal/modal";
+import { useState } from "react";
+import PorfolioModalContent from "../portfolioModalContent/portfolioModalContent";
 
 const Layout: React.FC = () => {
   const coins = [
@@ -9,7 +12,11 @@ const Layout: React.FC = () => {
     { name: "XRP", value: "39299874590.00" },
   ];
 
-  const handleClick = () => {};
+  const [portfolioModalActive, setPortfolioModalActive] = useState(false);
+
+  const handleClick = () => {
+    setPortfolioModalActive(true);
+  };
 
   return (
     <>
@@ -28,6 +35,9 @@ const Layout: React.FC = () => {
           <div className={styles.difference}>+2,38</div>
           <div className={styles.percent}>(1.80%)</div>
           <Button text="More info" handleClick={handleClick}/>
+          <Modal active={portfolioModalActive} setActive={() => setPortfolioModalActive(false)}>
+            <PorfolioModalContent setActive={() => setPortfolioModalActive(false)}/>
+          </Modal>
         </div>
       </header>
       <main>
