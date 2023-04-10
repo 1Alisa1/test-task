@@ -1,0 +1,75 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  @include small {
+    display: none;
+  }
+  th {
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+    font-size: 1.5rem;
+    font-weight: bold;
+    @include medium {
+      font-size: 1.2rem;
+    }
+  }
+  tbody tr {
+    cursor: pointer;
+  }
+  td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    font-size: 1.2rem;
+    @include medium {
+      font-size: 1rem;
+    }
+  }
+  .plus {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    div {
+      position: relative;
+      z-index: -1;
+    }
+  }
+}
+
+.tableSmall {
+  @include large {
+    display: none;
+  }
+  @include medium {
+    display: none;
+  }
+  @include small {
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    th {
+      padding: 5px;
+      background: #efefef;
+      border: 1px solid #dddddd;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    td {
+      border: 1px solid #dddddd;
+      padding: 5px;
+      font-size: 0.8rem;
+    }
+    .plus {
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
