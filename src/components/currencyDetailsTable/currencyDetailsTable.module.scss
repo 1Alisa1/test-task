@@ -1,0 +1,22 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.currencyDetailsTable {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  th {
+    display: none;
+  }
+  td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    font-size: 1.5rem;
+    @include medium {
+      font-size: 1rem;
+    }
+    @include small {
+      font-size: 0.875rem;
+    }
+  }
+}

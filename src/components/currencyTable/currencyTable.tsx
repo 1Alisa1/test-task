@@ -1,6 +1,7 @@
 import styles from "./currencyTable.module.scss";
 import Pagination from "../pagination/pagination";
 import usePagination from "../../hooks/usePagination";
+import { useNavigate } from "react-router-dom";
 
 const CurrencyTable: React.FC = () => {
   const values = [
@@ -1319,6 +1320,8 @@ const CurrencyTable: React.FC = () => {
     count: values.length,
   });
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Pagination
@@ -1343,7 +1346,7 @@ const CurrencyTable: React.FC = () => {
           </thead>
           <tbody>
             {values.slice(firstContentIndex, lastContentIndex).map((value) => (
-              <tr key={value.id}>
+              <tr key={value.id} onClick={() => navigate(`/details/${value.id}`)}>
                 <td>{value.rank}</td>
                 <td>{value.symbol}</td>
                 <td>{value.name}</td>
