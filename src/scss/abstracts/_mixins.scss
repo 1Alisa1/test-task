@@ -1,0 +1,27 @@
+@mixin wrapper($width) {
+  width: $width;
+  max-width: $width;
+  margin: 0 auto;
+}
+
+@mixin wrapper-small() {
+  padding: 0 3%;
+}
+
+@mixin large {
+  @media screen and (min-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media screen and (min-width: 768px) and (max-width: 1365px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    @content;
+  }
+}

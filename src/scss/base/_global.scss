@@ -1,0 +1,37 @@
+@use "/src/scss/abstracts/variables" as *;
+@use "/src/scss/abstracts/mixins" as *;
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  main {
+    @include large {
+      @include wrapper(map-get($width, "large"));
+    }
+    @include medium {
+      @include wrapper(map-get($width, "medium"));
+    }
+    @include small {
+      @include wrapper-small;
+    }
+    flex: 1 0 auto;
+  }
+}
