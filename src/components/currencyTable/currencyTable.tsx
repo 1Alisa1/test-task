@@ -2,6 +2,9 @@ import styles from "./currencyTable.module.scss";
 import Pagination from "../pagination/pagination";
 import usePagination from "../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
+import Modal from "../modal/modal";
+import { useState } from "react";
+import PorfolioUpdateModalContent from "../porfolioUpdateModalContent/porfolioUpdateModalContent";
 
 const CurrencyTable: React.FC = () => {
   const values = [
@@ -1322,6 +1325,8 @@ const CurrencyTable: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const [activeCurrencyId, setActiveCurrencyId] = useState<string | null>(null);
+
   return (
     <>
       <Pagination
@@ -1346,7 +1351,10 @@ const CurrencyTable: React.FC = () => {
           </thead>
           <tbody>
             {values.slice(firstContentIndex, lastContentIndex).map((value) => (
-              <tr key={value.id} onClick={() => navigate(`/details/${value.id}`)}>
+              <tr
+                key={value.id}
+                onClick={() => navigate(`/details/${value.id}`)}
+              >
                 <td>{value.rank}</td>
                 <td>{value.symbol}</td>
                 <td>{value.name}</td>
@@ -1362,11 +1370,25 @@ const CurrencyTable: React.FC = () => {
                   {value.changePercent24Hr}
                 </td>
                 <td>{value.priceUsd}</td>
-                <td className={styles.plus}>+</td>
+                <td className={styles.plus} onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveCurrencyId(value.id);
+                }}>+</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <Modal
+          active={!!activeCurrencyId}
+          setActive={() => setActiveCurrencyId(null)}
+        >
+          {activeCurrencyId && (
+            <PorfolioUpdateModalContent
+              name={activeCurrencyId}
+              setActive={() => setActiveCurrencyId(null)}
+            />
+          )}
+        </Modal>
       </div>
     </>
   );

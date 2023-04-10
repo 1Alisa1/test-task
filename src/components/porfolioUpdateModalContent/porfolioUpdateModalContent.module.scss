@@ -1,0 +1,108 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.modalContent {
+  width: 800px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  @include medium {
+    width: 600px;
+    height: 200px;
+  }
+  @include small {
+    width: 330px;
+    height: 150px;
+    padding: 10px;
+  }
+  .closeBtn {
+    position: relative;
+    top: -12px;
+    margin-left: auto;
+    width: fit-content;
+    height: fit-content;
+    font-size: 2rem;
+    rotate: 45deg;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    @include medium {
+      top: -10px;
+      font-size: 1.6rem;
+    }
+    @include small {
+      top: -6px;
+      font-size: 1.3rem;
+    }
+  }
+  .title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: -20px;
+    @include medium {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+    }
+    @include small {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+      font-size: 1.5rem;
+      @include medium {
+        font-size: 1.2rem;
+      }
+      @include small {
+        font-size: 1rem;
+      }
+    }
+    input {
+      height: 40px;
+      margin-left: 20px;
+      font-size: 1.5rem;
+      @include medium {
+        height: 30px;
+        font-size: 1.2rem;
+      }
+      @include small {
+        width: 130px;
+        height: 25px;
+        margin-left: 10px;
+        font-size: 1rem;
+      }
+    }
+    .submit {
+      padding: 5px 12px;
+      border: none;
+      border-radius: 6px;
+      background-color: rgb(43, 77, 228);
+      color: white;
+      font-size: 1.5rem;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      @include large {
+        &:hover {
+          background-color: rgb(27, 62, 219);
+        }
+      }
+      @include medium {
+        font-size: 1rem;
+        &:hover {
+          background-color: rgb(27, 62, 219);
+        }
+      }
+      @include small {
+        width: 80px;
+        padding: 5px 5px;
+        font-size: 0.8rem;
+      }
+      &:active {
+        background-color: rgb(9, 44, 202);
+      }
+    }
+  }
+}
