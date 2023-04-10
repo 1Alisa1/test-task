@@ -1,9 +1,9 @@
-import { Table } from "../../components/table/table";
+import { CurrencyTable } from "../../components/currencyTable/currencyTable";
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <Table />
+      <CurrencyTable />
     </>
   );
 };

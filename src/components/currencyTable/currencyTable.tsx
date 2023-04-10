@@ -1,8 +1,8 @@
-import styles from "./table.module.scss";
+import styles from "./currencyTable.module.scss";
 import Pagination from "../pagination/pagination";
 import usePagination from "../../hooks/usePagination";
 
-const Table: React.FC = () => {
+const CurrencyTable: React.FC = () => {
   const values = [
     {
       id: "bitcoin",
@@ -1328,70 +1328,45 @@ const Table: React.FC = () => {
         setPage={setPage}
         nextPage={nextPage}
       />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Symbol</th>
-            <th>Name</th>
-            <th>Avaliable supply</th>
-            <th>Change in 24h</th>
-            <th>Avarage price in 24h</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {values.slice(firstContentIndex, lastContentIndex).map((value) => (
-            <tr key={value.id}>
-              <td>{value.rank}</td>
-              <td>{value.symbol}</td>
-              <td>{value.name}</td>
-              <td>{Number(value.supply).toFixed(2)}</td>
-              <td
-                style={
-                  value.changePercent24Hr && value.changePercent24Hr[0] === "-"
-                    ? { backgroundColor: "#ff00004d" }
-                    : { backgroundColor: "#04760473" }
-                }
-              >
-                {value.changePercent24Hr}
-              </td>
-              <td>{value.priceUsd}</td>
-              <td className={styles.plus}>+</td>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Symbol</th>
+              <th>Name</th>
+              <th>Avaliable supply</th>
+              <th>Change in 24h</th>
+              <th>Avarage price in 24h</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <table className={styles.tableSmall}>
-        <thead>
-          <tr>
-            <th>Symbol</th>
-            <th>Avaliable supply</th>
-            <th>Change in 24h</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {values.slice(firstContentIndex, lastContentIndex).map((value) => (
-            <tr key={value.id}>
-              <td>{value.symbol}</td>
-              <td>{Number(value.supply).toFixed(2)}</td>
-              <td
-                style={
-                  value.changePercent24Hr && value.changePercent24Hr[0] === "-"
-                    ? { backgroundColor: "#ff00004d" }
-                    : { backgroundColor: "#04760473" }
-                }
-              >
-                {value.changePercent24Hr}
-              </td>
-              <td className={styles.plus}>+</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {values.slice(firstContentIndex, lastContentIndex).map((value) => (
+              <tr key={value.id}>
+                <td>{value.rank}</td>
+                <td>{value.symbol}</td>
+                <td>{value.name}</td>
+                <td>{Number(value.supply).toFixed(2)}</td>
+                <td
+                  style={
+                    value.changePercent24Hr &&
+                    value.changePercent24Hr[0] === "-"
+                      ? { backgroundColor: "#ff00004d" }
+                      : { backgroundColor: "#04760473" }
+                  }
+                >
+                  {value.changePercent24Hr}
+                </td>
+                <td>{value.priceUsd}</td>
+                <td className={styles.plus}>+</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
 
-export { Table };
+export { CurrencyTable };
