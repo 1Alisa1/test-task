@@ -27,10 +27,10 @@ const Chart: React.FC<ChartProps> = ({ currencyId }) => {
       <div className={styles.chart}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={response.map((chart) => ({
+            data={response ? response.map((chart) => ({
               priceUsd: chart.priceUsd,
               time: new Date(chart.time).toLocaleDateString(),
-            }))}
+            })) : undefined}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />

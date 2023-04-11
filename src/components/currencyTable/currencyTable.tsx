@@ -20,7 +20,7 @@ const CurrencyTable: React.FC = () => {
     totalPages,
   } = usePagination({
     contentPerPage: 10,
-    count: response.length,
+    count: response ? response.length : 0,
   });
 
   const navigate = useNavigate();
