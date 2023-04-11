@@ -24,53 +24,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .popularCoins {
-    display: flex;
-    gap: 1rem;
-    @include medium {
-      gap: 1rem;
-    }
-    @include small {
-      gap: 0.1rem;
-    }
-    .coin {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 0.8rem;
-      width: fit-content;
-      height: fit-content;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background-color: rgb(239 239 239);
-      @include medium {
-        padding: 5px 8px;
-      }
-      @include small {
-        gap: 0.3rem;
-        padding: 5px 8px;
-      }
-      .name {
-        font-size: 1.5rem;
-        font-weight: 600;
-        @include medium {
-          font-size: 1rem;
-        }
-        @include small {
-          font-size: 0.7rem;
-        }
-      }
-      .value {
-        font-size: 1.2rem;
-        @include medium {
-          font-size: 1rem;
-        }
-        @include small {
-          font-size: 0.6rem;
-        }
-      }
-    }
-  }
+  
   .portfolio {
     display: flex;
     justify-content: center;

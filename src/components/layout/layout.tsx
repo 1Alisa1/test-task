@@ -4,13 +4,9 @@ import { Button } from "../button/button";
 import Modal from "../modal/modal";
 import { useState } from "react";
 import PorfolioModalContent from "../portfolioModalContent/portfolioModalContent";
+import PopularCurrencies from "../popularCurrencies/popularCurrencies";
 
 const Layout: React.FC = () => {
-  const coins = [
-    { name: "Bitcoin", value: "17193925.00" },
-    { name: "Ethereum", value: "101160540.00" },
-    { name: "XRP", value: "39299874590.00" },
-  ];
 
   const [portfolioModalActive, setPortfolioModalActive] = useState(false);
 
@@ -21,14 +17,7 @@ const Layout: React.FC = () => {
   return (
     <>
       <header>
-        <div className={styles.popularCoins}>
-          {coins.map((coin) => (
-              <div className={styles.coin}>
-                <div className={styles.name}>{coin.name}</div>
-                <div className={styles.value}>${coin.value}</div>
-              </div>
-          ))}
-        </div>
+        <PopularCurrencies />
         <div className={styles.portfolio}>
           <img className={styles.icon} src="https://cdn-icons-png.flaticon.com/64/2697/2697702.png" alt="portfolio"></img>
           <div className={styles.cost}>134,32 USD</div>
