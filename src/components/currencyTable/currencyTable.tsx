@@ -6,6 +6,7 @@ import Modal from "../modal/modal";
 import { useState } from "react";
 import PorfolioUpdateModalContent from "../porfolioUpdateModalContent/porfolioUpdateModalContent";
 import { useCurrency } from "../../hooks/useCurrency";
+import CurrencyItem from "../../models/currencyItem";
 
 const CurrencyTable: React.FC = () => {
   const { loading, response, error } = useCurrency();
@@ -25,7 +26,7 @@ const CurrencyTable: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const [activeCurrencyId, setActiveCurrencyId] = useState<string | null>(null);
+  const [activeCurrencyItem, setActiveCurrencyItem] = useState<CurrencyItem | null>(null);
 
   if (error) {
     return <div>Error: Oops... </div>;
@@ -82,7 +83,7 @@ const CurrencyTable: React.FC = () => {
                         className={styles.plus}
                         onClick={(e) => {
                           e.stopPropagation();
-                          setActiveCurrencyId(value.id);
+                          setActiveCurrencyItem(value);
                         }}
                       >
                         +
@@ -92,13 +93,13 @@ const CurrencyTable: React.FC = () => {
             </tbody>
           </table>
           <Modal
-            active={!!activeCurrencyId}
-            setActive={() => setActiveCurrencyId(null)}
+            active={!!activeCurrencyItem}
+            setActive={() => setActiveCurrencyItem(null)}
           >
-            {activeCurrencyId && (
+            {activeCurrencyItem && (
               <PorfolioUpdateModalContent
-                name={activeCurrencyId}
-                setActive={() => setActiveCurrencyId(null)}
+                currencyItem={activeCurrencyItem}
+                setActive={() => setActiveCurrencyItem(null)}
               />
             )}
           </Modal>
