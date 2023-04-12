@@ -7,15 +7,14 @@ interface ModalContentProps {
 }
 
 const PorfolioModalContent: React.FC<ModalContentProps> = ({ setActive }) => {
-
-  const {portfolio, setPortfolio} = usePortfolioContext();
+  const { portfolio, setPortfolio } = usePortfolioContext();
 
   const handleDeleteClick = (id: string) => {
-    setPortfolio(prevState => {
+    setPortfolio((prevState) => {
       const newState = new Map(prevState);
       newState.delete(id);
       return newState;
-    })
+    });
   };
 
   const keys = Array.from(portfolio.keys());
@@ -27,13 +26,20 @@ const PorfolioModalContent: React.FC<ModalContentProps> = ({ setActive }) => {
       </div>
       <div className={styles.title}>Your currency</div>
       <div className={styles.currencies}>
-        {keys.map((id) => (
-          <div className={styles.currency} key={id}>
-            <div className={styles.name}>{id}</div>
-            <div className={styles.amount}>Amount: {portfolio.get(id)?.amount}</div>
-            <Button text="Delete" handleClick={() => handleDeleteClick(id)} />
-          </div>
-        ))}
+        {keys.length === 0
+          ? <div className={styles.text}>Portfolio is empty</div>
+          : keys.map((id) => (
+              <div className={styles.currency} key={id}>
+                <div className={styles.name}>{id}</div>
+                <div className={styles.amount}>
+                  Amount: {portfolio.get(id)?.amount}
+                </div>
+                <Button
+                  text="Delete"
+                  handleClick={() => handleDeleteClick(id)}
+                />
+              </div>
+            ))}
       </div>
     </div>
   );

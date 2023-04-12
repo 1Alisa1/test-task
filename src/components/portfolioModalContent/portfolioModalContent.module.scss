@@ -50,17 +50,34 @@
     }
   }
   .currencies {
+    .text {
+      text-align: center;
+      font-size: 2rem;
+      @include medium {
+        font-size: 1.5rem;
+      }
+      @include small {
+        font-size: 1rem;
+      }
+    }
     .currency {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
-      gap: 3rem;
+      gap: 9rem;
       margin-bottom: 10px;
+      @include medium {
+        gap: 7rem;
+      }
       @include small {
         gap: 2rem;
       }
       .name {
         font-size: 2rem;
         font-weight: 600;
+        &::first-letter {
+          text-transform: uppercase;
+        }
         @include medium {
           font-size: 1.5rem;
         }
