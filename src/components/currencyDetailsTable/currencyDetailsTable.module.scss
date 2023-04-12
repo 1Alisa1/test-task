@@ -2,14 +2,14 @@
 
 .currencyDetailsTable {
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   border: 1px solid #dddddd;
   border-collapse: collapse;
   @include medium {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
   @include small {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
   }
   th {
     display: none;
