@@ -17,7 +17,7 @@ const PopularCurrencies: React.FC = () => {
           response.map((currency) => (
             <div className={styles.coin}>
               <div className={styles.name}>{currency.name}</div>
-              <div className={styles.value}>${Number(currency.priceUsd).toFixed(6)}</div>
+              <div className={styles.value}>${Number(currency.priceUsd).toFixed(3)}</div>
             </div>
           ))}
       </div>
