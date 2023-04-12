@@ -18,7 +18,6 @@ const Pagination: React.FC<PaginationProps> = ({page, totalPages, nextPage, prev
           <button onClick={prevPage} className={styles.page}>
             &larr;
           </button>
-          {/* @ts-ignore */}
           {[...Array(totalPages).keys()].map((el) => (
             <button
               onClick={() => setPage(el + 1)}
