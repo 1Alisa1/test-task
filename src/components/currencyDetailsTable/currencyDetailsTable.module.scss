@@ -1,30 +1,43 @@
 @use "/src/scss/abstracts/mixins" as *;
 
-.currencyDetailsTable {
-  width: 100%;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  border: 1px solid #dddddd;
-  border-collapse: collapse;
+.container {
+  display: flex;
+  justify-content: center;
+  height: 360px;
   @include medium {
-    margin-bottom: 40px;
+    height: 297px;
   }
   @include small {
+    min-height: 200px;
+    height: auto;
     margin-bottom: 20px;
-    margin-top: 20px;
   }
-  th {
-    display: none;
-  }
-  td {
+  .currencyDetailsTable {
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 40px;
     border: 1px solid #dddddd;
-    padding: 5px;
-    font-size: 1.5rem;
+    border-collapse: collapse;
     @include medium {
-      font-size: 1rem;
+      margin-bottom: 40px;
     }
     @include small {
-      font-size: 0.875rem;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    th {
+      display: none;
+    }
+    td {
+      border: 1px solid #dddddd;
+      padding: 5px;
+      font-size: 1.5rem;
+      @include medium {
+        font-size: 1rem;
+      }
+      @include small {
+        font-size: 0.875rem;
+      }
     }
   }
 }

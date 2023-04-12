@@ -10,6 +10,8 @@ import {
 } from "recharts";
 import styles from "./chart.module.scss";
 import { useCurrencyChart } from "../../hooks/useCurrencyChart";
+import Loading from "../loading/loading";
+import Error from "../error/error";
 
 interface ChartProps {
   currencyId: string;
@@ -18,19 +20,21 @@ interface ChartProps {
 const Chart: React.FC<ChartProps> = ({ currencyId }) => {
   const { loading, response, error } = useCurrencyChart(currencyId);
 
-  if (error) {
-    return <div>Error: Oops... </div>;
-  } else if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
-  } else {
-    return (
-      <div className={styles.chart}>
+  return (
+    <div className={styles.chart}>
+      {error && <Error />}
+      {!error && loading && <Loading />}
+      {!error && !loading && response && (
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={response ? response.map((chart) => ({
-              priceUsd: chart.priceUsd,
-              time: new Date(chart.time).toLocaleDateString(),
-            })) : undefined}
+            data={
+              response
+                ? response.map((chart) => ({
+                    priceUsd: chart.priceUsd,
+                    time: new Date(chart.time).toLocaleDateString(),
+                  }))
+                : undefined
+            }
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
@@ -45,9 +49,9 @@ const Chart: React.FC<ChartProps> = ({ currencyId }) => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 };
 
 export default Chart;

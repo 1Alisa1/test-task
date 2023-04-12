@@ -1,0 +1,13 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  @include medium {
+    font-size: 1.5rem;
+  }
+  @include small {
+    font-size: 0.9rem;
+  }
+}

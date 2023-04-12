@@ -1,5 +1,17 @@
 @use "/src/scss/abstracts/mixins" as *;
 
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 470px;
+  @include medium {
+    height: 466px;
+  }
+  @include small {
+    height: 390px;
+  }
+}
 .tableContainer {
   overflow: auto;
   position: relative;

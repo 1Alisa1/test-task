@@ -1,13 +1,15 @@
 import { usePopularCurrencies } from "../../hooks/usePopularCurrencies";
+import Loading from "../loading/loading";
+import Error from "../error/error";
 import styles from "./popularCurrencies.module.scss";
 
 const PopularCurrencies: React.FC = () => {
   const { loading, response, error } = usePopularCurrencies();
 
   if (error) {
-    return <div>Error: Oops... </div>;
+    return <Error />;
   } else if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
+    return <Loading />;
   } else {
     return (
       <div className={styles.popularCoins}>
