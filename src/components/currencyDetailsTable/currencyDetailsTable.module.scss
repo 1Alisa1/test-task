@@ -3,6 +3,7 @@
 .currencyDetailsTable {
   width: 100%;
   margin-bottom: 40px;
+  margin-top: 40px;
   border: 1px solid #dddddd;
   border-collapse: collapse;
   @include medium {
@@ -10,6 +11,7 @@
   }
   @include small {
     margin-bottom: 20px;
+    margin-top: 20px;
   }
   th {
     display: none;
