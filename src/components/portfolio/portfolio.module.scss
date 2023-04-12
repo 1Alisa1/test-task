@@ -1,0 +1,29 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.portfolio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.7rem;
+  @include medium {
+    gap: 0.7rem;
+    font-size: 1rem;
+  }
+  @include small {
+    gap: 0.7rem;
+    font-size: 0.9rem;
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    @include medium {
+      width: 32px;
+      height: 32px;
+    }
+    @include small {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@use "/src/scss/abstracts/mixins" as *;
+
+.portfolioStatus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  @include medium {
+    gap: 0.7rem;
+    font-size: 1rem;
+  }
+  @include small {
+    gap: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
