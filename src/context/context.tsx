@@ -1,8 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { PortfolioActive } from "../models/portfolioActive";
 
-const LOCAL_STORAGE_KEY = "portfolio";
-
 interface PortfolioContextValue {
   portfolio: Map<string, PortfolioActive>;
   setPortfolio: React.Dispatch<
@@ -20,8 +18,13 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({
   children,
 }) => {
   let initialValue: Map<string, PortfolioActive> = new Map();
+  const localStorageKey = process.env.REACT_APP_LOCAL_STORAGE_KEY;
 
-  const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!localStorageKey) {
+    throw Error(`REACT_APP_LOCAL_STORAGE_KEY is undefined`);
+  }
+
+  const storage = localStorage.getItem(localStorageKey);
 
   if (storage) {
     initialValue = new Map(JSON.parse(storage));
@@ -32,7 +35,7 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({
   );
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(Array.from(portfolio.entries())));
+    localStorage.setItem(localStorageKey, JSON.stringify(Array.from(portfolio.entries())));
   }, [portfolio]);
 
   return (
