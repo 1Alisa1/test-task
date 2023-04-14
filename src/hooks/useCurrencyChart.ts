@@ -2,8 +2,14 @@ import Chart from "../models/currencyChart";
 import { useFetch } from "./useFetch";
 
 export function useCurrencyChart(currencyId: string) {
+  let apiUrl = process.env.REACT_APP_API_URL;
+
+  if (!apiUrl) {
+    throw Error(`url is undefined`);
+  }
+  
   const { loading, response, error } = useFetch<{ data: Chart[] }>(
-    `https://api.coincap.io/v2/assets/${currencyId}/history?interval=d1`
+    apiUrl +  `/assets/${currencyId}/history?interval=d1`
   );
 
   let data: Chart[] | null = null;

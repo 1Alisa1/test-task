@@ -2,8 +2,14 @@ import CurrencyItem from "../models/currencyItem";
 import { useFetch } from "./useFetch";
 
 export function useCurrency() {
+  let apiUrl = process.env.REACT_APP_API_URL;
+
+  if (!apiUrl) {
+    throw Error(`url is undefined`);
+  }
+
   const { loading, response, error } = useFetch<{ data: CurrencyItem[] }>(
-    `https://api.coincap.io/v2/assets`
+    apiUrl + "/assets"
   );
 
   let currencies: CurrencyItem[] | null = null;
