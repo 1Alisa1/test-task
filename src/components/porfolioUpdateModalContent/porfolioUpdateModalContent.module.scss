@@ -105,4 +105,13 @@
       }
     }
   }
+  .error {
+    margin-top: 5px;
+    text-align: center;
+    color: red;
+    @include small {
+      font-size: 0.7rem;
+      margin-right: 22px;
+    }
+  }
 }
