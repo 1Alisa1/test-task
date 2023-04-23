@@ -17,7 +17,7 @@ const Portfolio = () => {
   };
 
   const { portfolio, setPortfolio } = usePortfolioContext();
-  const { loading, response, error } = useCurrency();
+  const { loading, response, error } = useCurrency(100, 0);
 
   return (
     <div className={styles.portfolio}>
