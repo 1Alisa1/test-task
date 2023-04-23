@@ -3,13 +3,13 @@
 .container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  height: 470px;
+  align-items: center;
+  height: 406px;
   @include medium {
-    height: 515px;
+    height: 401px;
   }
   @include small {
-    height: 435px;
+    height: 314px;
   }
 }
 .table {
