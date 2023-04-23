@@ -1,7 +1,7 @@
 import CurrencyItem from "../models/currencyItem";
 import { useFetch } from "./useFetch";
 
-export function useCurrency(limit: number, offset: number) {
+export function useCurrenciesIds(ids: string[]) {
   let apiUrl = process.env.REACT_APP_API_URL;
 
   if (!apiUrl) {
@@ -9,7 +9,7 @@ export function useCurrency(limit: number, offset: number) {
   }
 
   const { loading, response, error } = useFetch<{ data: CurrencyItem[] }>(
-    apiUrl + `/assets?limit=${limit}&offset=${offset}`
+    apiUrl + `/assets?ids=${ids.join(',')}`
   );
 
   let currencies: CurrencyItem[] | null = null;

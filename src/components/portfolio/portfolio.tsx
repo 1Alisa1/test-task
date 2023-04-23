@@ -8,6 +8,7 @@ import { Button } from "../button/button";
 import PorfolioModalContent from "../portfolioModalContent/portfolioModalContent";
 import Loading from "../loading/loading";
 import Error from "../error/error";
+import { useCurrenciesIds } from "../../hooks/useCurrenciesIds";
 
 const Portfolio = () => {
   const [portfolioModalActive, setPortfolioModalActive] = useState(false);
@@ -17,7 +18,7 @@ const Portfolio = () => {
   };
 
   const { portfolio, setPortfolio } = usePortfolioContext();
-  const { loading, response, error } = useCurrency(100, 0);
+  const { loading, response, error } = useCurrenciesIds([...portfolio.keys()]);
 
   return (
     <div className={styles.portfolio}>
